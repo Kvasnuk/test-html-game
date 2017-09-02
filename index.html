@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сундук удачи</title>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/custom.css">
+    <link rel="stylesheet" href="dist/css/sprite.css">
+    <script>
+    </script>
+</head>
+<body>
+<header class="main-header">
+</header>
+<main id="main">
+    <div class="container">
+        <div class="game-place-container">
+            <div class="game-place">
+            <div class="game-field">
+                <div class="game-title">
+                    <a href="#" class="game-logo">
+                        <img src="dist/images/game-logo.png" alt="1Xchest">
+                    </a>
+                </div>
+                <div class="game-field-chests-container">
+                </div>
+                <div class="game-user-login">
+                    <p>
+                        Для игры Вам необходимо <a class="user-login-link" href="#">авторизоваться</a> и иметь в наличии
+                        сумму для осуществления попыток.
+                    </p>
+                </div>
+                <button id="game-start" class="btn btn-disable">Играть</button>
+            </div>
+            <canvas id="gnom" width="368px" height="790px"></canvas>
+                <canvas id="eyes" width="65" height="12"></canvas>
+                <canvas id="nose" width="60" height=44"></canvas>
+                <canvas id="gnom-message" width="346" height=324"></canvas>
+                <p class="gnom-message-box">Вскрывай сундуки из
+                    моей сокровищницы!
+                    Ищи несметные
+                    бонусы дня!</p>
+                <span id="topor"></span>
+                <span id="naruchnik"></span>
+                <span id="naplechnik"></span>
+                <span id="zakolka1" class="zakolka-animation"></span>
+                <span id="zakolka2" class="zakolka-animation"></span>
+                <span id="zakolka3" class="zakolka-animation"></span>
+
+        </div>
+        <div class="game-control">
+            <div class="game-control-container">
+                <img class="game-control-title" src="dist/images/control-board-bgr.png">
+                <ul class="game-control-board">
+                    <li>
+                        <p class="control-board-item-title">Текущий выигрыш</p>
+                        <p class="control-board-item-count">
+                            <span class="item-title">Бонусных баллов:</span>
+                            <span class="item-count">
+                                <input type="text" id="all-cash" value="1754" disabled>
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="control-board-item-title">Вам доступно</p>
+
+                        <p class="control-board-item-count">
+                            <span class="item-title">Игр:</span>
+                            <span class="item-count">
+                                <input type="text" id="open-games" value="0" disabled>
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="control-board-item-title">Покупка:</p>
+                        <p id="buy-games-count" class="control-board-item-count ">
+                            <span class="item-title">Игр:</span>
+                            <span class="item-count">
+                                <input type="number" id="buy-games" min="0" value="0">
+                            </span>
+                            <span class="board-item-icon add-game">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7"><path fill="#fff" d="M.98 6l-.97-.9L4.53.9 5.5 0l.97.9 4.52 4.2-.97.9L5.5 1.8z"/></svg>
+                            </span>
+                            <span class="board-item-icon remove-game">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7"><path fill="#fff" d="M10.02 1l.97.9-4.52 4.2-.97.9-.97-.9L.01 1.9.98 1 5.5 5.2z"/></svg>
+                            </span>
+                        </p>
+                        <p class="control-board-item-count">
+                            <span class="item-title">Сумма:</span>
+                            <span class="item-count">
+                                <input type="text" id="sum" value="0" disabled>
+                            </span>
+                            <span class="currency-icon">₽</span>
+                        </p>
+                    </li>
+                    <li> <button id="buy-games-btn" class="btn btn-disable">Купить</button></li>
+                    <li> <p class="one-game-cost">1 игра = 50 руб.</p></li>
+                </ul>
+
+            </div>
+            <div id="game-control-bg"></div>
+        </div>
+        </div>
+    </div>
+     <div id="success-modal-window" class="modal-window success-modal" style="display: none;"            >
+    <h4>Поздравляем!</h4>
+         <p> Ты выиграл <span>1000</span> бонусных баллов!</p>
+     </div>
+    <div id="lose-modal-window" class="modal-window lose-modal" style="display: none;" >
+        <h4>Неповезло!</h4>
+        <p>Попробуй еще раз.</p>
+    </div>
+    <div id="login-modal-window" class="modal-window login-modal" style="display: none;">
+        <span class="login-modal-close">X</span>
+        <h4>Авторизация</h4>
+        <button class="user-login-btn">Войти</button>
+        <button class="user-registration-btn">Зарегестрироваться</button>
+    </div>
+</main>
+<footer id="footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="dist/js/all.min.js"></script>
+</body>
+</html>
